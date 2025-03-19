@@ -12,6 +12,7 @@ public abstract class TradingAgent {
 	protected Trader t;
 	protected StockExchange exc;
 	protected NewsBoard news;
+	private ITradingStrategy strategy;
 	
 	/**
 	 * Constructor
@@ -19,11 +20,14 @@ public abstract class TradingAgent {
 	 * @param e The {@linkplain StockExchange} object at which the agent has an account and trades in. 
 	 * @param n The {@linkplain NewsBoard} object that generates news events.
 	 */
-	public TradingAgent(Trader t, StockExchange e, NewsBoard n) {
+	public TradingAgent(Trader t, StockExchange e, NewsBoard n, ITrading strategy s) {
 		this.t=t;
 		this.exc = e;
 		this.news = n;
+		this.strategy = s;
 	}
+	public void setITradingStrategy(ITradingStrategy s) {
+		this.s = s;
 	
 	/**
 	 * Method to be called as time advances to {@code time}. In response the TradingAgent will poll the NewsBoard for events.
@@ -40,7 +44,7 @@ public abstract class TradingAgent {
 	private void examineEvent(Event e) {
 		int positionInSecurity = exc.getAccounts().getTraderAccount(t).getPosition(e.getSecrity().getTicker());
 		if (positionInSecurity > 0) {
-			actOnEvent(e,positionInSecurity,exc.getPrice(e.getSecrity().getTicker()));
+			s.actOnEvent(e,positionInSecurity,exc.getPrice(e.getSecrity().getTicker()));
 		}
 	}
 
@@ -64,7 +68,7 @@ public abstract class TradingAgent {
 	 * @param pos The position (number of units) of the trader to the ticker that is mentioned in the Event.
 	 * @param price The current price of the relevant ticker. 
 	 */
-	protected abstract void actOnEvent(Event e, int pos, int price);
+
 	
 	
 	
