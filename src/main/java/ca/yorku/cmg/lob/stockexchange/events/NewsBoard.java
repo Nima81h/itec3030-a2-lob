@@ -10,7 +10,7 @@ import java.util.Set;
 
 import ca.yorku.cmg.lob.security.Security;
 import ca.yorku.cmg.lob.security.SecurityList;
-
+import ca.yorku.cmg.lob.tradingagent.Subject;
 /**
  * A NewsBoard object generates and shares financial/economic events that affect specific securities 
  */
