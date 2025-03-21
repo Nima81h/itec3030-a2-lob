@@ -8,7 +8,7 @@ import ca.yorku.cmg.lob.trader.Trader;
 /**
  * An trading agent that receives news and reacts by submitting ask or bid orders.
  */
-public abstract class TradingAgent {
+public abstract class TradingAgent implements INewObserver{
 	protected Trader t;
 	protected StockExchange exc;
 	protected NewsBoard news;
@@ -23,8 +23,12 @@ public abstract class TradingAgent {
 		this.t=t;
 		this.exc = e;
 		this.news = n;
+		this.news.registerObserver(this);
 	}
-	
+
+	public void update(Event event) {
+        examineEvent(event);
+   	}
 	/**
 	 * Method to be called as time advances to {@code time}. In response the TradingAgent will poll the NewsBoard for events.
 	 * @param time The time to advance to.
