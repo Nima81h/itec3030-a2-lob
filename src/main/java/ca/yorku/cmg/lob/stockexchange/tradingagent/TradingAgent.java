@@ -8,7 +8,7 @@ import ca.yorku.cmg.lob.trader.Trader;
 /**
  * An trading agent that receives news and reacts by submitting ask or bid orders.
  */
-public abstract class TradingAgent implements INewObserver{
+public abstract class TradingAgent implements INewsObserver{
 	protected Trader t;
 	protected StockExchange exc;
 	protected NewsBoard news;
