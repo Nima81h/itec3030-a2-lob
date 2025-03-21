@@ -10,7 +10,7 @@ import java.util.Set;
 
 import ca.yorku.cmg.lob.security.Security;
 import ca.yorku.cmg.lob.security.SecurityList;
-import ca.yorku.cmg.lob.tradingagent.Subject;
+import ca.yorku.cmg.lob.stockexchange.tradingagent.INewsObserver;
 /**
  * A NewsBoard object generates and shares financial/economic events that affect specific securities 
  */
@@ -18,7 +18,7 @@ public class NewsBoard extends Subject {
 
 	//Events are queued ordered by time
 	PriorityQueue<Event> eventQueue = new PriorityQueue<>((e1, e2) -> Long.compare(e1.getTime(), e2.getTime()));
-
+	private Event currentEvent;
 	SecurityList securities;
 	
 	public NewsBoard(SecurityList x) {
