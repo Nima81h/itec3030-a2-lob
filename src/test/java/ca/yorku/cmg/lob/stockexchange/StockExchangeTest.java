@@ -90,7 +90,7 @@ class StockExchangeTest {
 	 * To turn it off while working on the first parts uncomment the @Disabled annotation below. 
 	 */
 	@Disabled
-	//@Test
+	@Test
 	void pushTest() {
 		
 		exc.getNewsBoard().runEventsList();
