@@ -27,7 +27,7 @@ public abstract class TradingAgent implements INewObserver{
 	}
 
 	public void update(Event event) {
-        examineEvent(event);
+        examineEvent(e);
    	}
 	/**
 	 * Method to be called as time advances to {@code time}. In response the TradingAgent will poll the NewsBoard for events.
