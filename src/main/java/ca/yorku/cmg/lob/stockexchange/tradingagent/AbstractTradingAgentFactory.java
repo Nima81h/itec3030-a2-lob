@@ -7,7 +7,7 @@ import ca.yorku.cmg.lob.trader.Trader;
 public abstract class AbstractTradingAgentFactory {
 	
   
-	 * Creates a Trading Agent object based on specification. 
+	 /* Creates a Trading Agent object based on specification. 
 	 * @param type "Institutional" for creating an Institutional trading agent, e.g., TradingAgentInstitutional, and "Retail" for creating a Retail trading agent, e.g., TradingAgentRetail.
 	 * @param style "Aggressive" for assigning an aggressive strategy to the resulting trading agent, and "Conservative" for assigning a conservative one.
 	 * @param t The {@linkplain Trader} object that is associated with the {@linkplain TradingAgent} object
