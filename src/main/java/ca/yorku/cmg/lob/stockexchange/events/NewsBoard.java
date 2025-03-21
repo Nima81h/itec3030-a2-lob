@@ -116,9 +116,9 @@ public class NewsBoard extends Subject {
 	 /** Stub for the observer part. Runs the entire queue of events and sends notifications to registered trading agents.
 	 */
 
-	public void setCurrentEvent(Event event) {
-		this.currentEvent = event;
-		notifyObservers(event);
+	public void setCurrentEvent(Event e) {
+		this.currentEvent = e;
+		notifyObservers(e);
 	}
 
 	public void runEventsList() {
