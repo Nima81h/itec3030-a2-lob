@@ -14,7 +14,7 @@ import ca.yorku.cmg.lob.security.SecurityList;
 /**
  * A NewsBoard object generates and shares financial/economic events that affect specific securities 
  */
-public class NewsBoard {
+public class NewsBoard extends Subject {
 
 	//Events are queued ordered by time
 	PriorityQueue<Event> eventQueue = new PriorityQueue<>((e1, e2) -> Long.compare(e1.getTime(), e2.getTime()));
@@ -24,8 +24,9 @@ public class NewsBoard {
 	public NewsBoard(SecurityList x) {
 		this.securities = x;
 	}
-	
-    // Allowed event values
+
+
+	// Allowed event values
     private static final Set<String> VALID_EVENTS = new HashSet<>(
 	        Arrays.asList("Good", "Bad")
     );
@@ -110,13 +111,22 @@ public class NewsBoard {
 		}
 		return (e);
 	}
-	
-	
-	/**
-	 * Stub for the observer part. Runs the entire queue of events and sends notifications to registered trading agents.   
-	 */
-	public void runEventsList() {
 
+
+	 /** Stub for the observer part. Runs the entire queue of events and sends notifications to registered trading agents.
+	 */
+
+	public void setCurrentEvent(Event event) {
+		this.currentEvent = event;
+		notifyObservers(event);
+	}
+
+	public void runEventsList() {
+		PriorityQueue<Event> clonedQueue = new PriorityQueue<>(eventQueue);
+		while (!clonedQueue.isEmpty()) {
+			Event event = clonedQueue.poll();
+			setCurrentEvent(event);
+		}
 	}
 	
 	
