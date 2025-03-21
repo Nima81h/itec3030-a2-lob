@@ -26,7 +26,7 @@ public abstract class TradingAgent implements INewsObserver{
 		this.news.registerObserver(this);
 	}
 
-	public void update(Event event) {
+	public void update(Event e) {
         examineEvent(e);
    	}
 	/**
